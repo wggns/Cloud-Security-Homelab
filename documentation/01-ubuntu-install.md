@@ -1,43 +1,50 @@
-For this project, I installed Ubuntu Server LTS (64-bit) on an HP EliteDesk Mini PC.
+Ubuntu Server Installation (HP EliteDesk Mini PC)
+1. Project Context
 
-I chose Ubuntu Server instead of Ubuntu Desktop because:
+For this lab environment, Ubuntu Server 22.04 LTS (64-bit) was installed on an HP EliteDesk Mini PC.
 
-It is lightweight (no GUI)
+Ubuntu Server was selected instead of Ubuntu Desktop for the following reasons:
 
-It runs primarily via CLI
+Lightweight (no graphical user interface)
 
-It is better suited for logging, security testing, and server environments
+CLI-focused environment
 
-It aligns with cybersecurity and cloud lab objectives
+Better suited for logging and security testing
 
-Ubuntu Server does not include a graphical interface by default.
+Aligns with cybersecurity and cloud lab objectives
 
-1. Download Ubuntu Server ISO
+Reduced attack surface compared to GUI-based systems
 
-Download:
+Ubuntu Server does not include a graphical interface by default, making it ideal for infrastructure and monitoring roles.
+
+2. Download Ubuntu Server ISO
+
+Download the official ISO:
 
 Ubuntu Server LTS (64-bit)
-From the official Ubuntu website. https://ubuntu.com/download
+https://ubuntu.com/download
 
-2. Create a Bootable USB Drive
+Always download directly from the official Ubuntu website to ensure integrity.
 
-After downloading the ISO file, you must create a bootable flash drive.
+3. Create a Bootable USB Drive
+Requirements
 
-Requirements:
+USB flash drive (minimum 8GB)
 
-USB flash drive (8GB minimum)
+64GB SanDisk USB used for this installation
 
-I used a 64GB SanDisk USB
+Rufus (Windows utility)
 
-Software Used:
+Download Rufus:
+https://rufus.ie/en/
 
-Rufus (on Windows) https://rufus.ie/en/
+Rufus Configuration
 
-Rufus Configuration:
+Use the following configuration:
 
-Device: Select your USB drive
+Device: Select USB drive
 
-Boot Selection: Select the Ubuntu Server ISO file
+Boot Selection: Ubuntu Server ISO
 
 Partition Scheme: GPT
 
@@ -45,13 +52,13 @@ Target System: UEFI (non-CSM)
 
 File System: FAT32
 
-Click Start
+Click Start.
 
-Wait until Rufus displays DONE.
+Wait until Rufus displays DONE before removing the USB drive.
 
-3. Boot from USB (HP EliteDesk Mini PC)
+4. Boot from USB (HP EliteDesk Mini PC)
 
-Insert the USB drive into the Mini PC
+Insert USB drive into Mini PC
 
 Power on the machine
 
@@ -63,12 +70,9 @@ Select the USB drive
 
 Press Enter
 
-The system will now boot into the Ubuntu Server installer.
+The system will boot into the Ubuntu Server installer.
 
-4. Ubuntu Server Installation Configuration
-
-During installation, select the following options:
-
+5. Ubuntu Server Installation Configuration
 Language
 
 English
@@ -81,17 +85,17 @@ Network Configuration
 
 If using Ethernet:
 
-DHCP is automatically detected
+DHCP automatically detected
 
 No manual configuration required
 
 If using WiFi:
 
-Select your SSID
+Select SSID
 
-Enter the WiFi password
+Enter WiFi password
 
-5. Storage Configuration
+6. Storage Configuration
 
 Select:
 
@@ -99,10 +103,9 @@ Use entire disk
 
 Automatic partitioning
 
-⚠️ Note:
-This replaces the previous operating system (Windows) with Ubuntu Server.
+⚠️ Note: This will erase the previous operating system (Windows) and install Ubuntu Server as the primary OS.
 
-6. Install OpenSSH Server
+7. Install OpenSSH Server (Critical Step)
 
 During installation, select:
 
@@ -110,27 +113,38 @@ During installation, select:
 
 This enables:
 
-Remote management
+Remote administration
 
-SSH access from Kali Linux or management laptop
+SSH access from Kali Linux
 
-Secure administration of the server
+Secure management from the monitoring laptop
 
-This step is critical for a cybersecurity lab environment.
+Brute-force simulation testing
 
-7. Final Installation Steps
+Log-based intrusion detection validation
+
+This step is essential for a cybersecurity lab environment.
+
+8. Final Installation Steps
 
 After installation completes:
 
-Remove the USB flash drive
+Remove USB flash drive
 
 Press Enter to reboot
 
-The system will now boot from the internal SSD
+The system will now boot from the internal SSD.
 
-You should see a CLI login screen similar to:
+You should see:
 
-Ubuntu 22.04 LTS
-login:
+Ubuntu 22.04 LTS login:
 
-At this point, Ubuntu Server is successfully installed.
+At this stage, Ubuntu Server is successfully installed and ready for:
+
+Docker installation
+
+Monitoring stack deployment
+
+Fail2ban configuration
+
+SSH-based attack simulation
