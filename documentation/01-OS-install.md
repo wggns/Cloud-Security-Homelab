@@ -77,3 +77,5 @@ Monitoring stack deployment
 Fail2ban configuration
 
 SSH-based attack simulation
+
+To install Kali Linux I watched this exact video step by step. https://www.youtube.com/watch?v=56VTPxJ0QEc. But typically you will be doing the same exact steps! just the installation setup is a bit different.
