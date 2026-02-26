@@ -1,7 +1,7 @@
 Ubuntu Server Installation (HP EliteDesk Mini PC)
 1. Project Context
 
-For this lab environment, Ubuntu Server 22.04 LTS (64-bit) was installed on an HP EliteDesk Mini PC. Ubuntu Server was selected instead of Ubuntu Desktop for the following reasons:
+For this lab environment, Ubuntu Server 22.04 LTS (64-bit) and Kali Linux Desktop was installed on 2 HP EliteDesk Mini PCS. Ubuntu Server was selected instead of Ubuntu Desktop for the following reasons:
 >Lightweight (no graphical user interface)
 >CLI-focused environment
 >Better suited for logging and security testing
