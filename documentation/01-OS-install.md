@@ -29,85 +29,42 @@ Use the following configuration:
 Now Wait until Rufus displays DONE before removing the USB drive.
 
 4. Boot from USB (HP EliteDesk Mini PC)
-
-Insert USB drive into Mini PC
-
-Power on the machine
-
-Immediately press ESC repeatedly
-
-When the Startup Menu appears, press F9 (Boot Device Options)
-
-Select the USB drive
-
-Press Enter
-
-The system will boot into the Ubuntu Server installer.
+>Insert USB drive into Mini PC
+>power on and immediately press ESC repeatedly and When the Startup Menu appears, press F9 (Boot Device Options)
+>Select the USB drive
+>Press enter then system will boot into the Ubuntu Server installer.
 
 5. Ubuntu Server Installation Configuration
-Language
-
+>Language
 English
 
-Keyboard
-
+>Keyboard
 English (US)
 
-Network Configuration
-
-If using Ethernet:
-
-DHCP automatically detected
-
-No manual configuration required
-
-If using WiFi:
-
-Select SSID
-
-Enter WiFi password
-
-6. Storage Configuration
-
-Select:
-
-Use entire disk
-
-Automatic partitioning
-
-⚠️ Note: This will erase the previous operating system (Windows) and install Ubuntu Server as the primary OS.
-
-7. Install OpenSSH Server (Critical Step)
+For the network configuration
+If using Ethernet then DHCP automatically detected and no manual configuration required. If you are using WiFi then select SSID then enter WiFi password.
+Storage Configuration
+Then Select Use entire disk, Automatic partitioning
+This will erase the previous operating system (Windows) and install Ubuntu Server as the primary OS. Then install OpenSSH Server (Critical Step)
 
 During installation, select:
-
-✔ Install OpenSSH Server
+Install OpenSSH Server
 
 This enables:
-
-Remote administration
-
-SSH access from Kali Linux
-
-Secure management from the monitoring laptop
-
-Brute-force simulation testing
-
-Log-based intrusion detection validation
+>Remote administration
+>SSH access from Kali Linux
+>Secure management from the monitoring laptop
+>Brute-force simulation testing
+>Log-based intrusion detection validation
 
 This step is essential for a cybersecurity lab environment.
 
 8. Final Installation Steps
-
 After installation completes:
-
-Remove USB flash drive
-
-Press Enter to reboot
-
-The system will now boot from the internal SSD.
-
-You should see:
+>Remove USB flash drive
+>Press Enter to reboot
+>The system will now boot from the internal SSD.
+>You should see:
 
 Ubuntu 22.04 LTS login:
 
