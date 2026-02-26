@@ -1,60 +1,32 @@
 Ubuntu Server Installation (HP EliteDesk Mini PC)
 1. Project Context
 
-For this lab environment, Ubuntu Server 22.04 LTS (64-bit) was installed on an HP EliteDesk Mini PC.
-
-Ubuntu Server was selected instead of Ubuntu Desktop for the following reasons:
-
-Lightweight (no graphical user interface)
-
-CLI-focused environment
-
-Better suited for logging and security testing
-
-Aligns with cybersecurity and cloud lab objectives
-
-Reduced attack surface compared to GUI-based systems
-
-Ubuntu Server does not include a graphical interface by default, making it ideal for infrastructure and monitoring roles.
+For this lab environment, Ubuntu Server 22.04 LTS (64-bit) was installed on an HP EliteDesk Mini PC. Ubuntu Server was selected instead of Ubuntu Desktop for the following reasons:
+>Lightweight (no graphical user interface)
+>CLI-focused environment
+>Better suited for logging and security testing
+>Aligns with cybersecurity and cloud lab objectives
+>Reduced attack surface compared to GUI-based systems
+>Ubuntu Server does not include a graphical interface by default, making it ideal for infrastructure and monitoring roles.
 
 2. Download Ubuntu Server ISO
 
-Download the official ISO:
-
-Ubuntu Server LTS (64-bit)
-https://ubuntu.com/download
-
-Always download directly from the official Ubuntu website to ensure integrity.
+Download the official ISO:Ubuntu Server LTS (64-bit) https://ubuntu.com/download. Always download directly from the official Ubuntu website to ensure integrity.
 
 3. Create a Bootable USB Drive
-Requirements
+Requirements: USB flash drive (minimum 8GB) and I used 64GB SanDisk USB used for this installation
 
-USB flash drive (minimum 8GB)
-
-64GB SanDisk USB used for this installation
-
-Rufus (Windows utility)
-
-Download Rufus:
-https://rufus.ie/en/
-
-Rufus Configuration
-
+Rufus (Windows utility) Download Rufus: https://rufus.ie/en/
+Rufus Configuration that I used
 Use the following configuration:
 
-Device: Select USB drive
-
-Boot Selection: Ubuntu Server ISO
-
-Partition Scheme: GPT
-
-Target System: UEFI (non-CSM)
-
-File System: FAT32
-
-Click Start.
-
-Wait until Rufus displays DONE before removing the USB drive.
+>Device: Select USB drive
+>Boot Selection: Ubuntu Server ISO
+>Partition Scheme: GPT
+>Target System: UEFI (non-CSM)
+>File System: FAT32
+>Click Start.
+Now Wait until Rufus displays DONE before removing the USB drive.
 
 4. Boot from USB (HP EliteDesk Mini PC)
 
