@@ -1,7 +1,7 @@
-# Cloud-Security-Homelab
+# Security-Homelab
  Security monitoring lab from scratch using Kali Linux, Ubuntu Server, Docker, Prometheus, Grafana and Fail2ban to simulate and detect SSH brute-force attacks.
 
-# Cloud Security Homelab
+# Security Homelab
 
 ## Project Overview
 Designed and deployed a Linux-based cloud security monitoring lab from scratch. 
