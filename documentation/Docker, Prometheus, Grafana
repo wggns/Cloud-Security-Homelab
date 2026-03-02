@@ -1,44 +1,90 @@
-Install Docker on Ubuntu Server
+Install Docker on Ubuntu Server & Deploy Monitoring Stack
+1. Update Ubuntu Server
 
-First, I updated the system. on ubuntu I ran the script 
+First, update the system packages:
+
 sudo apt update
 sudo apt upgrade -y
+2. Install Docker
 
-Then i installed Docker 
+Install Docker:
+
 sudo apt install docker.io -y
-And then these scripts enable and start docker 
+
+Enable and start the Docker service:
+
 sudo systemctl enable docker
 sudo systemctl start docker
 
-Then i verified the install room version because the the way you enter scripts depends on the version you have. I put in 
-sudo docker --version
-once that's checked in I run 
-sudo apt install docker-compose -y
-then verify the version 
-docker-compose --version
-All these commands helped me install docker on ubuntu server. 
+Verify the Docker version:
 
-Next i create a monitoring stack directory with this command 
+sudo docker --version
+3. Install Docker Compose
+
+Install Docker Compose:
+
+sudo apt install docker-compose -y
+
+Verify the version:
+
+docker-compose --version
+
+At this point, Docker and Docker Compose are fully installed and ready to use.
+
+Create Monitoring Stack Directory
+
+Create a project folder:
+
 mkdir monitoring-stack
 cd monitoring-stack
-Inside this directory, I created the required configuration files: 
+
+Inside this directory, create the required configuration files:
+
 nano docker-compose.yml
 nano prometheus.yml
-For Grafana, configuration was handled inside the Docker Compose file.
 
-In this next step i had to Edit YAML files directly inside Ubuntu using nano but i found it difficult due to specific formatting spacing and copy/paste limitations within the CLI environment of ubuntu server. So i decided to use SSH from my windows laptop to remotely control the ubuntu server. But to be able to do this i had to find out what ubuntus ip address was. although i didn't understand to well but i would realize that the ip address can change sometime. on my windows laptop i went to powershell and i ran the command ip a or hostname -I
-that's going to give you the internal LAN IP
-  (example: 192.168.1.50). With that ip you will write ssh "username@192.168.1.50" then it will ask for the password of that ubuntu server and then i got in.
+Grafana configuration is handled inside the Docker Compose file.
 
-SSH allowed me to:
--Cleanly copy and paste full YAML configurations
--Avoid indentation errors
--Manage files more efficiently
+Editing YAML Files (Why I Used SSH)
 
-in my windows laptop i then opened my monitoring stack directory and reopened nano docker and prometheus 
-AI gave me the exact YAML configurations 
+Editing YAML files directly in Ubuntu Server using nano can be difficult due to:
 
-Example docker-compose.yml Structure
+Strict indentation requirements
+
+Spacing sensitivity in YAML
+
+Limited copy/paste functionality in CLI
+
+To improve workflow, I used SSH from my Windows laptop to remotely manage the Ubuntu Server.
+
+Find Ubuntu Server IP Address
+
+On Ubuntu Server, run:
+
+hostname -I
+
+This returns the internal LAN IP address (example: 192.168.1.50).
+
+Note: The IP address may change if DHCP is enabled.
+
+Connect via SSH (From Windows)
+
+On Windows PowerShell:
+
+ssh username@192.168.1.50
+
+After entering the password, I was connected to the Ubuntu Server remotely.
+
+Benefits of SSH:
+
+Clean copy/paste of YAML configurations
+
+Avoided indentation errors
+
+More efficient file management
+
+Docker Compose Configuration
+docker-compose.yml
 version: '3'
 
 services:
@@ -55,8 +101,7 @@ services:
     container_name: grafana
     ports:
       - "3000:3000"
-
-And Prometheus 
+prometheus.yml
 global:
   scrape_interval: 15s
 
@@ -64,18 +109,87 @@ scrape_configs:
   - job_name: 'prometheus'
     static_configs:
       - targets: ['localhost:9090']
+Launch the Monitoring Stack
 
-From here after the configurations were written out i the launched the monitoring stack with 
+Start the containers:
+
 sudo docker-compose up -d
-and then i verified the containers were running 
-sudo docker ps
-If successful, it will say Prometheus running on port 9090 and Grafana running on port 3000.
 
-Now i had set up the backend. from here I had planned to use my laptop to basically view everything that is happening to the ubuntu server. On my laptop web browser I ran these on two separate browsers 
+Verify containers are running:
+
+sudo docker ps
+
+If successful, you should see:
+
+Prometheus running on port 9090
+
+Grafana running on port 3000
+
+Accessing Prometheus & Grafana
+
+From your laptop web browser:
+
 http://192.168.1.50:9090
 http://192.168.1.50:3000
- this is prometheus and grafana. My plan was to connect these together. Prometheus Confirms metrics and validates whether services are being monitored.
 
-so Prometheus collects data and grafana visializes. in grafana i go to settings-data sources-add data source and i selected prometheus. then i entered the url http://prometheus:9090. That will work only if both of the containers are in the same network.
+Port 9090 → Prometheus
 
-Lastly i click save and test. Now it should be connected and i would be able to monitor ubuntu machine. From everything that I did when i accessed grafana i did it from my laptop which is over my internal LAN going through my switch and my firewall. I understood that it was only reachable inside my homelab network. And that's the safest setup for a lab .From here i was able to monitor ubuntu from my homelab and practiced what it would look like when being under attack with using Kali linux.
+Port 3000 → Grafana
+
+Connecting Grafana to Prometheus
+
+In Grafana:
+
+Go to Settings
+
+Select Data Sources
+
+Click Add data source
+
+Choose Prometheus
+
+Enter URL:
+
+http://prometheus:9090
+
+This works because both containers are running inside the same Docker network.
+
+Click Save & Test to confirm the connection.
+
+Architecture Overview
+
+Ubuntu Server runs Docker containers (Prometheus + Grafana)
+
+Kali Linux is used to simulate attacks
+
+My laptop acts as the management console
+
+All devices connect through:
+
+Managed switch
+
+Firewall
+
+Internal LAN
+
+Grafana was accessed from my laptop through the internal network only. The services were not exposed to the public internet, which keeps the lab environment secure.
+
+Purpose of This Setup
+
+Prometheus collects system metrics.
+
+Grafana visualizes collected data.
+
+Kali Linux simulates attack traffic.
+
+Ubuntu logs and monitors activity.
+
+This setup allows me to:
+
+Simulate real-world attack scenarios
+
+Monitor system behavior under attack
+
+Validate detection visibility
+
+Practice defensive monitoring workflows
