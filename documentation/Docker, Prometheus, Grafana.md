@@ -93,7 +93,7 @@ This returns the internal LAN IP address (example: `192.168.1.50`)
 
 On Windows PowerShell:
 ```powershell
-ssh username@192.168.1.50
+ssh username@<your-server-ip>
 ```
 
 After entering the password, I was connected to the Ubuntu Server remotely.
